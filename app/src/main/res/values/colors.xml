@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#34D399</color>
+    <color name="primary_dark">#0B0F14</color>
+    <color name="accent">#34D399</color>
+    <color name="accent_active">#34D399</color>
+    <color name="background">#0B0F14</color>
+    <color name="surface">#141A22</color>
+    <color name="stroke_dim">#273140</color>
+    <color name="toggle_content_off">#052E20</color>
+    <color name="text_primary">#E8EDF2</color>
+    <color name="text_secondary">#7C8794</color>
+    <color name="status_active">#34D399</color>
+    <color name="status_inactive">#4B5563</color>
+</resources>

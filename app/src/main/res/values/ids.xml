@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="auto_off_disabled" type="id" />
+    <item name="auto_off_5" type="id" />
+    <item name="auto_off_10" type="id" />
+    <item name="auto_off_15" type="id" />
+    <item name="auto_off_30" type="id" />
+    <item name="auto_off_60" type="id" />
+    <item name="auto_off_custom" type="id" />
+</resources>

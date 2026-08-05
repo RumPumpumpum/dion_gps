@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+    color: #1A1A2E;
+    line-height: 1.65;
+    font-size: 11pt;
+    margin: 0;
+  }
+  h1 {
+    font-size: 24pt;
+    margin: 0 0 4px 0;
+    color: #0B7A55;
+  }
+  .subtitle { color: #6B7280; font-size: 11pt; margin-bottom: 18px; }
+  h2 {
+    font-size: 14pt;
+    color: #0B7A55;
+    border-bottom: 2px solid #34D399;
+    padding-bottom: 4px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+  }
+  h3 { font-size: 12pt; margin: 14px 0 6px 0; color: #1A1A2E; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th, td {
+    border: 1px solid #D7DDE3;
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 10.5pt;
+    vertical-align: top;
+  }
+  th { background: #EAFBF3; width: 32%; color: #0B7A55; }
+  ol, ul { margin: 6px 0 6px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  code {
+    background: #F1F3F5;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 10pt;
+  }
+  .hero {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #F5F7FA;
+    border: 1px solid #E1E6EB;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 14px 0 6px 0;
+  }
+  .hero img {
+    width: 260px;
+    border-radius: 10px;
+    border: 1px solid #D7DDE3;
+  }
+  .hero .caption { flex: 1; }
+  .hero .caption p { margin: 0 0 8px 0; }
+  .badge {
+    display: inline-block;
+    background: #34D399;
+    color: #052E20;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: 9.5pt;
+    margin-bottom: 8px;
+  }
+  .note {
+    background: #FFF8E1;
+    border-left: 4px solid #F5B301;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 10pt;
+    margin: 12px 0;
+  }
+  .footer {
+    margin-top: 30px;
+    border-top: 1px solid #D7DDE3;
+    padding-top: 8px;
+    color: #9CA3AF;
+    font-size: 9pt;
+    text-align: center;
+  }
+  .page-break { page-break-before: always; }
+  .small-path { font-size: 9.5pt; color: #6B7280; margin: 4px 0 0 0; }
+</style>
+</head>
+<body>
+
+  <h1>디온 GPS</h1>
+  <div class="subtitle">Android Mock Location 앱 · 사용 설명서</div>
+
+  <div class="hero">
+    <img src="main_screen.png" alt="메인 화면">
+    <div class="caption">
+      <span class="badge">Kotlin · Android</span>
+      <p><strong>디온 GPS</strong>는 휴대폰의 위치를 지정된 고정 좌표로 표시해 주는 Android 앱입니다.
+      화면 중앙의 큰 원형 버튼 한 번으로 켜고 끌 수 있으며, 홈 화면 위젯과 자동 종료 타이머를 지원합니다.</p>
+      <p>테스트·개발·과제 목적의 위치 표시 확인용으로 제작되었습니다.</p>
+    </div>
+  </div>
+
+  <h2>1. 앱 개요</h2>
+  <table>
+    <tr><th>앱 이름</th><td>디온 GPS (DionGps)</td></tr>
+    <tr><th>플랫폼</th><td>Android (Kotlin)</td></tr>
+    <tr><th>최소 지원 버전</th><td>Android 8.0 (API 26) 이상</td></tr>
+    <tr><th>고정 위치</th><td>부산광역시 해운대구 아랫반송로29번길 28</td></tr>
+    <tr><th>좌표</th><td>위도 35.2246901 / 경도 129.1504108</td></tr>
+    <tr><th>주요 구성</th><td>메인 화면, 설정 화면, 백그라운드 서비스, 홈 화면 위젯</td></tr>
+  </table>
+
+  <h2>2. 주요 기능</h2>
+  <h3>① 위치 표시 켜기 / 끄기</h3>
+  <ul>
+    <li>중앙의 큰 원형 버튼을 누르면 지정된 고정 위치로 전환됩니다.</li>
+    <li>한 번 더 누르면 해제되어 원래 상태로 돌아갑니다.</li>
+    <li>동작 중에는 버튼 주위에 펄스(맥동) 애니메이션과 초록색 상태 표시가 나타납니다.</li>
+  </ul>
+
+  <h3>② 자동 종료 타이머</h3>
+  <ul>
+    <li>설정에서 자동 종료 시간을 선택할 수 있습니다: 5분 / 10분 / 15분 / 30분 / 1시간.</li>
+    <li>목록 맨 아래 <strong>사용자 정의</strong>를 선택하면 원하는 분을 직접 입력할 수 있습니다.</li>
+    <li>설정한 시간이 지나면 자동으로 종료됩니다.</li>
+    <li>메인 화면과 위젯에 <strong>남은 시간이 실시간 카운트다운</strong>으로 표시됩니다.</li>
+  </ul>
+
+  <h3>③ 홈 화면 위젯</h3>
+  <ul>
+    <li>앱을 열지 않고 홈 화면에서 탭 한 번으로 켜고 끌 수 있습니다.</li>
+    <li>기본 크기는 1×1이며, 가로로 최대 4칸까지 늘릴 수 있습니다.</li>
+    <li>상태에 따라 배경색이 바뀌고(켜짐: 초록 / 꺼짐: 회색), 자동 종료 남은 시간도 표시됩니다.</li>
+    <li>메인 화면 하단의 <em>"홈 화면에 위젯 추가"</em> 버튼으로 바로 설치할 수 있습니다.</li>
+  </ul>
+
+  <h3>④ 백그라운드 유지 및 알림</h3>
+  <ul>
+    <li>앱을 닫아도 동작이 유지되며, 상태 알림에서 바로 종료할 수 있습니다.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h2>3. 설치 가이드</h2>
+  <p>이 앱은 Play 스토어에 등록된 앱이 아니라 APK 파일을 직접 설치하는 방식입니다.
+  따라서 설치 과정에서 나타나는 보안 경고를 수동으로 허용해 주어야 합니다.</p>
+
+  <h3>3-1. APK 파일 준비</h3>
+  <ul>
+    <li>Android Studio에서 <code>Build → Build Bundle(s) / APK(s) → Build APK(s)</code>로 빌드</li>
+    <li>생성 위치: <code>app\build\outputs\apk\debug\app-debug.apk</code></li>
+    <li>이 APK 파일을 휴대폰으로 복사(USB, 클라우드, 메신저 등)</li>
+  </ul>
+
+  <h3>3-2. "출처를 알 수 없는 앱" 설치 허용</h3>
+  <p>APK를 처음 실행하면 "이 출처의 앱은 설치할 수 없습니다" 경고가 나타납니다. 다음처럼 허용합니다.</p>
+  <ol>
+    <li>경고 창에서 <strong>설정</strong>을 탭</li>
+    <li><code>이 출처 허용</code> / <code>알 수 없는 앱 설치 허용</code>을 켬</li>
+    <li>뒤로 가서 <strong>설치</strong>를 다시 진행</li>
+  </ol>
+  <p class="small-path">경로 예시: 설정 → 앱 → 특별한 접근 → 알 수 없는 앱 설치 → (파일 관리자/브라우저) → 허용</p>
+
+  <h3>3-3. Play Protect 경고 우회</h3>
+  <p>설치·실행 시 "Play Protect가 이 앱을 인식하지 못했습니다" 또는
+  "안전하지 않은 앱" 경고가 나타날 수 있습니다. 직접 만든 앱이므로 아래처럼 진행합니다.</p>
+  <ol>
+    <li>경고 창에서 <code>자세히</code> → <strong>무시하고 설치</strong>(또는 "확인 없이 설치")를 선택</li>
+    <li>필요 시 Play 스토어 → 프로필 → <code>Play Protect</code> → 설정에서
+        <code>기기 보안 위협 검사</code>를 일시적으로 꺼두면 경고가 줄어듭니다.</li>
+  </ol>
+  <div class="note">
+    보안 경고는 스토어를 거치지 않은 앱이라 뜨는 정상적인 안내입니다. 본인이 만든 과제용 앱이므로 허용해도 됩니다.
+    설치가 끝난 뒤에는 Play Protect를 다시 켜 두는 것을 권장합니다.
+  </div>
+
+  <h3>3-4. (대안) USB 디버깅으로 바로 설치</h3>
+  <ul>
+    <li>휴대폰: 설정 → 개발자 옵션 → <code>USB 디버깅</code> 켬</li>
+    <li>PC와 USB 연결 후 Android Studio에서 <strong>Run(▶)</strong> → 위 보안 경고 없이 바로 설치·실행</li>
+  </ul>
+
+  <h2>4. GPS 조작 앱 설정 (필수)</h2>
+  <p>설치만으로는 동작하지 않습니다. Android의 모의 위치 기능은 개발자 옵션에서 이 앱을 지정해야 켜집니다.</p>
+  <ol>
+    <li><strong>개발자 옵션 활성화</strong> — 설정 → 휴대전화 정보 → 소프트웨어 정보 → <code>빌드 번호</code>를 7회 연속 탭</li>
+    <li><strong>모의 위치 앱 선택</strong> — 설정 → 개발자 옵션 → <code>모의 위치 앱 선택</code> → <strong>디온 GPS</strong></li>
+    <li><strong>위치 권한 허용</strong> — 앱 최초 실행 시 위치 권한을 허용</li>
+    <li><strong>알림 권한 허용</strong> — Android 13 이상에서 상태 알림 표시용</li>
+  </ol>
+  <div class="note">
+    앱 안의 안내 버튼을 누르면 개발자 옵션의 "모의 위치 앱 선택" 항목으로 바로 이동하도록 되어 있습니다.
+    (기기·제조사에 따라 메뉴 이름이 다를 수 있습니다.)
+  </div>
+
+  <h2>5. 사용 순서</h2>
+  <ol>
+    <li>앱을 실행합니다.</li>
+    <li>중앙의 원형 버튼을 눌러 고정 위치로 전환합니다.</li>
+    <li>필요하면 <strong>자동 종료</strong> 시간을 설정합니다.</li>
+    <li>다시 버튼을 누르면 해제됩니다.</li>
+    <li>홈 화면 위젯을 추가하면 앱 없이도 빠르게 켜고 끌 수 있습니다.</li>
+  </ol>
+
+  <h2>6. 화면 구성 요약</h2>
+  <table>
+    <tr><th>중앙 원형 버튼</th><td>메인 토글. 켜짐/꺼짐 상태를 색과 애니메이션으로 표시</td></tr>
+    <tr><th>상태 표시</th><td>현재 동작 여부(조작 중 / 꺼짐)</td></tr>
+    <tr><th>자동 종료 버튼</th><td>현재 설정값 표시(예: "자동 종료 : 15분"), 탭 시 설정 화면 이동</td></tr>
+    <tr><th>남은 시간</th><td>자동 종료까지 남은 시간 카운트다운</td></tr>
+    <tr><th>하단 정보</th><td>고정 주소·좌표, 위젯 추가 버튼</td></tr>
+  </table>
+
+  <h2>7. 프로젝트 구조</h2>
+  <table>
+    <tr><th>MainActivity.kt</th><td>메인 화면, 중앙 토글 버튼, 카운트다운, 위젯 추가</td></tr>
+    <tr><th>SettingsActivity.kt</th><td>자동 종료 시간 설정(프리셋 + 사용자 정의)</td></tr>
+    <tr><th>MockLocationService.kt</th><td>백그라운드 서비스, 자동 종료 예약, 알림</td></tr>
+    <tr><th>MockLocationHelper.kt</th><td>위치 표시 핵심 로직</td></tr>
+    <tr><th>MockWidgetProvider.kt</th><td>홈 화면 위젯(토글, 상태·남은 시간 표시)</td></tr>
+    <tr><th>AppPreferences.kt</th><td>설정 저장, 시간 라벨 변환</td></tr>
+    <tr><th>LocationConstants.kt</th><td>고정 좌표·주소 정의</td></tr>
+  </table>
+
+  <div class="note">
+    본 앱은 개발·테스트·학습(과제) 목적으로 제작되었습니다. 실제 위치 기반 서비스의 이용 약관을 위반하지 않는 범위에서 사용하세요.
+  </div>
+
+  <div class="footer">디온 GPS 사용 설명서 · Android (Kotlin)</div>
+
+</body>
+</html>

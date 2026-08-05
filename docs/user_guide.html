@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+    color: #1A1A2E;
+    line-height: 1.7;
+    font-size: 12pt;
+    margin: 0;
+  }
+  h1 { font-size: 26pt; margin: 0 0 4px 0; color: #0B7A55; }
+  .subtitle { color: #6B7280; font-size: 12pt; margin-bottom: 16px; }
+  h2 {
+    font-size: 16pt; color: #0B7A55;
+    border-bottom: 3px solid #34D399;
+    padding-bottom: 5px; margin-top: 22px; margin-bottom: 12px;
+  }
+  ol, ul { margin: 6px 0; padding-left: 24px; }
+  li { margin: 7px 0; font-size: 12pt; }
+  code {
+    background: #F1F3F5; padding: 1px 6px; border-radius: 4px;
+    font-family: Consolas, monospace; font-size: 11pt;
+  }
+  .hero {
+    display: flex; gap: 20px; align-items: center;
+    background: #F5F7FA; border: 1px solid #E1E6EB;
+    border-radius: 12px; padding: 16px; margin: 12px 0 6px 0;
+  }
+  .hero img { width: 210px; border-radius: 10px; }
+  .hero .caption { flex: 1; }
+  .hero .caption p { margin: 0 0 8px 0; }
+  .badge {
+    display: inline-block; background: #34D399; color: #052E20;
+    font-weight: bold; border-radius: 20px; padding: 3px 14px;
+    font-size: 10pt; margin-bottom: 8px;
+  }
+  .stepblock {
+    display: flex; gap: 18px; align-items: center;
+    border: 1px solid #E1E6EB; border-radius: 12px;
+    padding: 14px 16px; margin: 14px 0;
+    page-break-inside: avoid;
+  }
+  .stepblock img {
+    width: 200px; border-radius: 10px; border: 1px solid #E1E6EB;
+    flex-shrink: 0;
+  }
+  .stepblock .text { flex: 1; }
+  .stepnum {
+    display: inline-block; background: #0B7A55; color: #fff;
+    font-weight: bold; border-radius: 50%;
+    width: 30px; height: 30px; text-align: center; line-height: 30px;
+    font-size: 13pt; margin-right: 8px;
+  }
+  .steptitle { font-size: 14pt; font-weight: bold; color: #0B7A55; margin: 0 0 6px 0; }
+  .note {
+    background: #FFF8E1; border-left: 5px solid #F5B301;
+    padding: 12px 16px; border-radius: 4px; font-size: 11pt; margin: 12px 0;
+  }
+  .path { font-size: 10pt; color: #6B7280; margin: 4px 0 0 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  th, td { border: 1px solid #D7DDE3; padding: 8px 11px; text-align: left; font-size: 11pt; vertical-align: top; }
+  th { background: #EAFBF3; width: 32%; color: #0B7A55; }
+  .footer { margin-top: 26px; border-top: 1px solid #D7DDE3; padding-top: 8px; color: #9CA3AF; font-size: 9pt; text-align: center; }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+  <h1>디온 GPS</h1>
+  <div class="subtitle">누구나 따라 하는 설치 &amp; 사용 설명서</div>
+
+  <div class="hero">
+    <img src="main_screen.png" alt="메인 화면">
+    <div class="caption">
+      <span class="badge">Android 앱</span>
+      <p><strong>디온 GPS</strong>는 화면 가운데의 큰 버튼을 한 번 누르면
+      내 휴대폰 위치를 정해진 장소로 바꿔주는 앱입니다.</p>
+      <p>그림을 보면서 위에서부터 순서대로 따라 하시면 됩니다. 약 5분이면 끝납니다.</p>
+    </div>
+  </div>
+
+  <h2>준비물</h2>
+  <ul>
+    <li>안드로이드 휴대폰 (안드로이드 8.0 이상)</li>
+    <li>전달받은 설치 파일 <code>디온GPS.apk</code> (카카오톡·문자·이메일 등으로 받은 파일)</li>
+  </ul>
+
+  <h2>앱 설치하기</h2>
+
+  <div class="stepblock">
+    <img src="step1_open.png" alt="설치 파일 열기">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">1</span>설치 파일 열기</div>
+      <ul>
+        <li>휴대폰에서 받은 <code>디온GPS.apk</code> 파일을 손가락으로 누릅니다.</li>
+        <li>파일은 보통 <strong>내 파일 → 다운로드</strong> 폴더에 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stepblock">
+    <img src="step2_allow.png" alt="이 출처 허용">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">2</span>"알 수 없는 앱" 설치 허용</div>
+      <ul>
+        <li>설치가 막히면서 안내 창이 뜨면 <strong>설정</strong>을 누릅니다.</li>
+        <li><strong>이 출처 허용</strong> 스위치를 오른쪽으로 켭니다(초록색).</li>
+        <li>뒤로 가서 <strong>설치</strong>를 다시 누릅니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stepblock">
+    <img src="step3_installanyway.png" alt="무시하고 설치">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">3</span>보안 경고가 나오면</div>
+      <ul>
+        <li>"안전하지 않은 앱" 같은 경고가 나오면 <strong>무시하고 설치</strong>를 누릅니다.</li>
+        <li>스토어를 거치지 않은 앱이라 뜨는 정상 안내이니 안심하셔도 됩니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    이 경고들은 나쁜 앱이라서가 아니라, 스토어(플레이스토어)를 통하지 않고 파일로 직접 설치할 때
+    항상 나오는 안내입니다. 걱정하지 말고 그대로 진행하세요.
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>위치 기능 켜기 (꼭 필요해요)</h2>
+  <p>설치만 하면 아직 위치가 바뀌지 않습니다. 아래 설정을 한 번만 해두면 됩니다.</p>
+
+  <div class="stepblock">
+    <img src="step4_build.png" alt="빌드번호 7번 누르기">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">4</span>개발자 옵션 켜기</div>
+      <ul>
+        <li><strong>설정 → 휴대전화 정보 → 소프트웨어 정보</strong>로 들어갑니다.</li>
+        <li><strong>빌드번호</strong>를 <strong>7번 연속</strong> 빠르게 누릅니다.</li>
+        <li>"개발자가 되었습니다" 문구가 뜨면 완료입니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stepblock">
+    <img src="step5_selectapp.png" alt="디온 GPS 선택">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">5</span>디온 GPS를 위치 앱으로 지정</div>
+      <ul>
+        <li><strong>설정 → 개발자 옵션</strong>으로 들어갑니다.</li>
+        <li><strong>모의 위치 앱 선택</strong>을 누릅니다.</li>
+        <li>목록에서 <strong>디온 GPS</strong>를 고릅니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stepblock">
+    <img src="step6_permission.png" alt="위치 권한 허용">
+    <div class="text">
+      <div class="steptitle"><span class="stepnum">6</span>권한 허용</div>
+      <ul>
+        <li>앱을 처음 열면 <strong>위치 권한</strong>을 물어봅니다 → <strong>허용</strong></li>
+        <li><strong>알림 권한</strong>을 물어보면 함께 허용합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    앱 안의 안내 버튼을 누르면 5번의 설정 화면으로 바로 이동합니다.
+    휴대폰 제조사에 따라 메뉴 이름이 조금 다를 수 있습니다.
+  </div>
+
+  <h2>사용 방법</h2>
+  <table>
+    <tr><th>가운데 큰 버튼</th><td>한 번 누르면 정해진 위치로 바뀝니다(초록색). 다시 누르면 꺼집니다.</td></tr>
+    <tr><th>자동 종료</th><td>시간을 정해두면(5분~1시간, 직접 입력도 가능) 그 시간 뒤 저절로 꺼집니다.</td></tr>
+    <tr><th>남은 시간</th><td>자동으로 꺼질 때까지 남은 시간이 화면에 보입니다.</td></tr>
+    <tr><th>홈 화면 위젯</th><td>위젯을 놓으면 앱을 열지 않고 홈 화면에서 바로 켜고 끌 수 있습니다.</td></tr>
+  </table>
+
+  <h2>잘 안 될 때</h2>
+  <table>
+    <tr><th>위치가 안 바뀌어요</th><td>5번에서 디온 GPS가 선택됐는지 확인하고, 지도 앱을 껐다 켜 보세요.</td></tr>
+    <tr><th>목록에 디온 GPS가 없어요</th><td>앱을 한 번 실행한 뒤 다시 "모의 위치 앱 선택"을 열어 보세요.</td></tr>
+    <tr><th>설치가 안 돼요</th><td>2번의 "이 출처 허용"이 켜져 있는지 확인하세요.</td></tr>
+  </table>
+
+  <div class="footer">디온 GPS · 설치 &amp; 사용 설명서</div>
+
+</body>
+</html>

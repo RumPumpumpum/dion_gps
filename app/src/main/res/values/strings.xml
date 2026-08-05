@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">디온 GPS</string>
+    <string name="target_location_label">고정 위치</string>
+    <string name="status_active">GPS 조작 중</string>
+    <string name="status_inactive">GPS 조작 꺼짐</string>
+    <string name="btn_start_mock">이 위치로 이동</string>
+    <string name="btn_stop_mock">GPS 조작 끄기</string>
+    <string name="mock_started">고정 위치로 이동했습니다.</string>
+    <string name="mock_stopped">GPS 조작을 종료했습니다.</string>
+    <string name="coordinates_format">위도 %.6f / 경도 %.6f</string>
+    <string name="settings_title">설정</string>
+    <string name="auto_off_setting_title">GPS 조작 자동 끄기</string>
+    <string name="auto_off_setting_desc">설정한 시간이 지나면 GPS 조작이 자동으로 종료됩니다.</string>
+    <string name="auto_off_disabled">자동 끄기: 사용 안 함</string>
+    <string name="auto_off_enabled">자동 끄기: %d분 후</string>
+    <string name="auto_off_saved">자동 끄기: %s</string>
+    <string name="auto_off_button">자동 종료 : %s</string>
+    <string name="auto_off_none">사용 안 함</string>
+    <string name="auto_off_remaining_label">자동 종료까지</string>
+    <string name="auto_off_custom">사용자 정의</string>
+    <string name="auto_off_custom_hint">분</string>
+    <string name="auto_off_custom_apply">적용</string>
+    <string name="auto_off_custom_invalid">1분 이상 입력해 주세요.</string>
+    <string name="permission_denied">위치 권한이 필요합니다.</string>
+    <string name="mock_setup_title">모의 위치 앱 설정 필요</string>
+    <string name="mock_setup_message">개발자 옵션에서 이 앱을 \"모의 위치 앱\"으로 선택해 주세요.\n\n설정 → 개발자 옵션 → 모의 위치 앱 선택 → 디온 GPS</string>
+    <string name="open_developer_options">개발자 옵션 열기</string>
+    <string name="developer_options_unavailable">개발자 옵션을 열 수 없습니다. 설정에서 직접 이동해 주세요.</string>
+    <string name="notification_channel_name">GPS 조작</string>
+    <string name="notification_channel_desc">GPS 조작이 실행 중일 때 표시됩니다.</string>
+    <string name="notification_title">GPS 조작 실행 중</string>
+    <string name="stop_mock">끄기</string>
+    <string name="widget_on">GPS 조작 중</string>
+    <string name="widget_off">GPS 꺼짐</string>
+    <string name="widget_desc">탭 한 번으로 GPS 조작을 켜고 끕니다.</string>
+    <string name="widget_hint">위젯을 설치하면 홈 화면에서 탭 한 번으로 켜고 끌 수 있어요</string>
+    <string name="widget_add_button">홈 화면에 위젯 추가</string>
+    <string name="widget_pin_unsupported">이 런처는 위젯 자동 추가를 지원하지 않습니다. 홈 화면을 길게 눌러 위젯을 추가해 주세요.</string>
+</resources>
