@@ -76,22 +76,14 @@ class SystemLocationInjector(private val context: Context) {
 
     private fun allowHiddenApis() {
         runCatching {
-            val getDeclaredMethod = Class::class.java.getDeclaredMethod(
-                "getDeclaredMethod",
-                String::class.java,
-                Array<Class<*>>::class.java
-            )
             val vmRuntime = Class.forName("dalvik.system.VMRuntime")
-            val getRuntime = getDeclaredMethod.invoke(
-                vmRuntime,
-                "getRuntime",
-                emptyArray<Class<*>>()
-            ) as java.lang.reflect.Method
-            val setHiddenApiExemptions = getDeclaredMethod.invoke(
-                vmRuntime,
+            val getRuntime = vmRuntime.getDeclaredMethod("getRuntime")
+            val setHiddenApiExemptions = vmRuntime.getDeclaredMethod(
                 "setHiddenApiExemptions",
-                arrayOf(Array<String>::class.java)
-            ) as java.lang.reflect.Method
+                Array<String>::class.java
+            )
+            getRuntime.isAccessible = true
+            setHiddenApiExemptions.isAccessible = true
             setHiddenApiExemptions.invoke(getRuntime.invoke(null), arrayOf("L") as Any)
         }
     }
