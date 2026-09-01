@@ -3,16 +3,16 @@ package com.dion.gpsmock
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationManager
 import android.os.Build
-import android.os.SystemClock
 import androidx.core.content.ContextCompat
 
 class MockLocationHelper(private val context: Context) {
 
     private val locationManager =
         context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+    private val systemInjector = SystemLocationInjector(context)
 
     fun hasLocationPermission(): Boolean {
         return ContextCompat.checkSelfPermission(
@@ -71,10 +71,8 @@ class MockLocationHelper(private val context: Context) {
         }
 
         return try {
-            setupTestProvider(LocationManager.GPS_PROVIDER)
-            setupTestProvider(LocationManager.NETWORK_PROVIDER)
-            pushMockLocation(LocationManager.GPS_PROVIDER)
-            pushMockLocation(LocationManager.NETWORK_PROVIDER)
+            targetProviders().forEach { setupTestProvider(it) }
+            pushAllProviders()
             Result.success(Unit)
         } catch (e: SecurityException) {
             Result.failure(e)
@@ -84,7 +82,7 @@ class MockLocationHelper(private val context: Context) {
     }
 
     fun stopMocking() {
-        listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER).forEach { provider ->
+        targetProviders().forEach { provider ->
             runCatching {
                 if (locationManager.isProviderEnabled(provider)) {
                     locationManager.setTestProviderEnabled(provider, false)
@@ -98,10 +96,32 @@ class MockLocationHelper(private val context: Context) {
 
     fun refreshMockLocation() {
         if (!hasLocationPermission()) return
-        runCatching {
-            pushMockLocation(LocationManager.GPS_PROVIDER)
-            pushMockLocation(LocationManager.NETWORK_PROVIDER)
+        runCatching { pushAllProviders() }
+    }
+
+    private fun pushAllProviders() {
+        val gps = RealLocationFactory.create(LocationManager.GPS_PROVIDER)
+        systemInjector.inject(gps)
+
+        targetProviders().forEach { provider ->
+            val location = if (provider == LocationManager.GPS_PROVIDER) {
+                gps
+            } else {
+                RealLocationFactory.create(provider)
+            }
+            locationManager.setTestProviderLocation(provider, location)
         }
+    }
+
+    private fun targetProviders(): List<String> {
+        val providers = mutableListOf(
+            LocationManager.GPS_PROVIDER,
+            LocationManager.NETWORK_PROVIDER
+        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            providers += LocationManager.FUSED_PROVIDER
+        }
+        return providers
     }
 
     private fun setupTestProvider(provider: String) {
@@ -120,27 +140,5 @@ class MockLocationHelper(private val context: Context) {
             android.location.Criteria.ACCURACY_FINE
         )
         locationManager.setTestProviderEnabled(provider, true)
-    }
-
-    private fun pushMockLocation(provider: String) {
-        val location = Location(provider).apply {
-            latitude = LocationConstants.TARGET_LAT
-            longitude = LocationConstants.TARGET_LNG
-            altitude = 10.0
-            accuracy = 1.0f
-            bearing = 0f
-            speed = 0f
-            time = System.currentTimeMillis()
-            elapsedRealtimeNanos = SystemClock.elapsedRealtimeNanos()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                verticalAccuracyMeters = 1.0f
-                bearingAccuracyDegrees = 0.1f
-                speedAccuracyMetersPerSecond = 0.01f
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                isMock = true
-            }
-        }
-        locationManager.setTestProviderLocation(provider, location)
     }
 }
